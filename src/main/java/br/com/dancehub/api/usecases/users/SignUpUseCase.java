@@ -41,7 +41,6 @@ public class SignUpUseCase {
 
         User user = User.newUser(email, cpf, name, role, phone, birthDate, username, this.passwordService.encode(password));
 
-
         final UserValidator validator = new UserValidator(user);
         validator.validate()
                 .throwPossibleErrors()

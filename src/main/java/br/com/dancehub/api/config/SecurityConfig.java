@@ -52,7 +52,7 @@ public class SecurityConfig {
                 .cors(config -> config.configurationSource(request -> cors))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(AUTH_WHITELIST).permitAll()
-                        .anyRequest().authenticated()
+                        .anyRequest().permitAll() // temporario
                 ).sessionManagement(config -> config.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(this.authenticationProvider)
                 .exceptionHandling(config -> config.authenticationEntryPoint(this.authEntryPointJwt));
