@@ -7,3 +7,7 @@
 ########  ##     ## ##    ##  ######  ######## ##     ##  #######  ########          ##     ## ##        ####
  Application: ${application.title}
  Version: ${application.formatted-version}
+ Authors:
+   - Guilherme
+   - Leonardo
+   - Gustavo

@@ -6,6 +6,9 @@ springdoc:
     path: /docs/swagger.html
 
 spring:
+  threads:
+    virtual:
+      enabled: true
   lifecycle:
     timeout-per-shutdown-phase: "10s"
   jackson:
