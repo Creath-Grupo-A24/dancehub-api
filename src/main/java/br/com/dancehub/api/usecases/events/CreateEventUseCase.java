@@ -23,7 +23,7 @@ public class CreateEventUseCase {
     public UUID execute(CreateEventRequest req) {
         final List<Category> categories = req.categories()
                 .stream()
-                .map(s -> this.categoryRepository.findById(UUIDUtils.getFromString(s))
+                .map(s -> this.categoryRepository.findById(Integer.parseInt(s))
                         .orElseThrow(() -> new NotFoundEntityException(Category.class, s))).toList();
         final String local = req.local();
         final String description = req.description();

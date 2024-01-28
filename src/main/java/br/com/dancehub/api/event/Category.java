@@ -15,15 +15,15 @@ import java.util.UUID;
 public class Category implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private UUID id;
+    private Integer id;
     @Enumerated(EnumType.STRING)
     @Column(name = "type")
     private CategoryType type;
 
     @Builder
-    public Category(UUID id, CategoryType type) {
+    public Category(Integer id, CategoryType type) {
         this.id = id;
         this.type = type;
     }

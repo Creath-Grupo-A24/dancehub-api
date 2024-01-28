@@ -10,19 +10,20 @@ CREATE TABLE creath_events
 
 CREATE TABLE creath_categories
 (
-    id   uuid primary key,
-    type varchar
+    id   serial primary key,
+    type varchar(30) not null
 );
 
-INSERT INTO creath_categories values(uuid_generate_v4(), 'SOLO');
-INSERT INTO creath_categories values(uuid_generate_v4(), 'DUO');
-INSERT INTO creath_categories values(uuid_generate_v4(), 'TRIO');
-INSERT INTO creath_categories values(uuid_generate_v4(), 'EQUIPE');
+INSERT INTO creath_categories(type) values('SOLO');
+INSERT INTO creath_categories(type) values('DUO');
+INSERT INTO creath_categories(type) values('TRIO');
+INSERT INTO creath_categories(type) values('EQUIPE');
+
 
 CREATE TABLE creath_events_categories
 (
     event_id    uuid,
-    category_id uuid
+    category_id integer
 );
 
 alter table creath_events_categories
