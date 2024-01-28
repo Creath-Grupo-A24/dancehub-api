@@ -4,10 +4,10 @@ import lombok.Getter;
 
 @Getter
 public enum RoleType {
-    ROLE_DANCER("Dançarino"),
-    ROLE_TEACHER("Coreógrafo"),
-    ROLE_MANAGER("Diretor da companhia"),
-    ROLE_ADMIN("Funcionário da DanceHub");
+    DANCER("Dançarino"),
+    TEACHER("Coreógrafo"),
+    MANAGER("Diretor da companhia"),
+    ADMIN("Funcionário da DanceHub");
 
     private final String description;
 

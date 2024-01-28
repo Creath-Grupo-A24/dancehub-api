@@ -1,4 +1,4 @@
-Create table creath_events
+CREATE TABLE creath_events
 (
     id          uuid primary key,
     name        varchar,
@@ -8,7 +8,7 @@ Create table creath_events
     time        timestamp
 );
 
-Create table creath_categories
+CREATE TABLE creath_categories
 (
     id   uuid primary key,
     type varchar
@@ -19,7 +19,7 @@ INSERT INTO creath_categories values(uuid_generate_v4(), 'DUO');
 INSERT INTO creath_categories values(uuid_generate_v4(), 'TRIO');
 INSERT INTO creath_categories values(uuid_generate_v4(), 'EQUIPE');
 
-CREATE table creath_events_categories
+CREATE TABLE creath_events_categories
 (
     event_id    uuid,
     category_id uuid
@@ -32,6 +32,10 @@ alter table creath_events_categories
 alter table creath_events_categories
     add constraint fk_category
         foreign key (category_id) references creath_categories;
+
+comment on table creath_events_categories is 'Tabela de relacionamento entre eventos e categorias';
+comment on table creath_events is 'Tabela de eventos';
+comment on table creath_categories is 'Tabela de categorias';
 
 select *
 from creath_events;

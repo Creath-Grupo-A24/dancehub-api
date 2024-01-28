@@ -47,9 +47,11 @@ public class User implements UserDetails, Serializable {
     private String username;
     @Column(name = "password", nullable = false)
     private String password;
+    @Column(name = "token")
+    private String token;
 
     @Builder
-    public User(UUID id, List<Role> roles, String email, String cpf, String name, String phone, Date birthDate, Date passwordDate, String username, String password) {
+    public User(UUID id, List<Role> roles, String email, String cpf, String name, String phone, Date birthDate, Date passwordDate, String username, String password, String token) {
         this.id = id;
         this.roles = roles;
         this.email = email;
@@ -60,6 +62,7 @@ public class User implements UserDetails, Serializable {
         this.passwordDate = passwordDate;
         this.username = username;
         this.password = password;
+        this.token = token;
     }
 
     public static User newUser(String email, String cpf, String name, Role role, String phone, Date birthDate, String username, String password) {
