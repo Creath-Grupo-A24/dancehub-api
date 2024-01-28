@@ -2,6 +2,7 @@ package br.com.dancehub.api.user.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public record SignUpRequest(
@@ -14,7 +15,7 @@ public record SignUpRequest(
         @JsonProperty("name")
         String name,
         @JsonProperty("birth_date")
-        Date birthDate,
+        String birthDate,
         @JsonProperty("role_id")
         Integer roleId,
         @JsonProperty("cpf")
@@ -22,4 +23,8 @@ public record SignUpRequest(
         @JsonProperty("phone")
         String phone
 ) {
+
+    public Date getBirthDate() {
+        return Date.from(java.time.LocalDate.parse(birthDate, DateTimeFormatter.ofPattern("dd/MM/yyyy")).atStartOfDay().toInstant(java.time.ZoneOffset.UTC));
+    }
 }

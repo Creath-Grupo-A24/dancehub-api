@@ -28,7 +28,7 @@ public class SecurityConfig {
             "/actuator/**",
             "/health/**",
 //          Api endpoints
-            "/v1/auth/**",
+            "/v1/sign/**",
             "/docs/**",
             "/error",
             "/error/*"
@@ -43,6 +43,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         final CorsConfiguration cors = new CorsConfiguration().applyPermitDefaultValues();
+        cors.addAllowedMethod(HttpMethod.POST);
         cors.addAllowedMethod(HttpMethod.PUT);
         cors.addAllowedMethod(HttpMethod.PATCH);
         cors.addAllowedMethod(HttpMethod.GET);
@@ -51,7 +52,7 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(config -> config.configurationSource(request -> cors))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(AUTH_WHITELIST).permitAll()
+                        /*.requestMatchers(AUTH_WHITELIST).permitAll()*/
                         .anyRequest().permitAll() // temporario
                 ).sessionManagement(config -> config.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(this.authenticationProvider)
