@@ -24,7 +24,8 @@ public class SignInUseCase {
         final String password = request.password();
 
         final Authentication authenticate = this.authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
-        final User details = (User) authenticate.getDetails();
+        final User details = (User) authenticate.getPrincipal();
+
         return new AuthResponse(this.jwtService.generateToken(details), UserApiPresenter.present(details));
     }
 }

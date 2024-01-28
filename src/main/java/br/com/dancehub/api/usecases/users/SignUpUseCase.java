@@ -13,6 +13,9 @@ import br.com.dancehub.api.user.role.Role;
 import br.com.dancehub.api.user.role.RoleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -24,6 +27,7 @@ public class SignUpUseCase {
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
     private final PasswordService passwordService;
+    private final AuthenticationManager authenticationManager;
     private final JwtService jwtService;
 
     public AuthResponse execute(final SignUpRequest request) {
@@ -34,7 +38,7 @@ public class SignUpUseCase {
         final Integer roleId = request.roleId();
         final String cpf = request.cpf();
         final String phone = request.phone();
-        final Date birthDate = request.birthDate();
+        final Date birthDate = request.getBirthDate();
 
         final Role role = this.roleRepository.findById(roleId)
                 .orElseThrow(() -> new NotFoundEntityException(Role.class, roleId.toString()));
@@ -48,7 +52,10 @@ public class SignUpUseCase {
                 .uniqueness(() -> this.userRepository.existsByCpf(cpf), "cpf")
                 .throwPossibleErrors();
 
-        user = this.userRepository.save(user);
+        this.userRepository.save(user);
+
+        final Authentication authenticate = this.authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
+        user = (User) authenticate.getPrincipal();
 
         return new AuthResponse(this.jwtService.generateToken(user), UserApiPresenter.present(user));
     }

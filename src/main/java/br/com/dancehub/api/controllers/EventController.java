@@ -21,7 +21,6 @@ public class EventController implements EventAPI {
 
     private final CreateEventUseCase createEventUseCase;
     private final UploadRuleFileUseCase uploadRuleFileUseCase;
-    // POO na veia
 
     @Override
     public ResponseEntity<?> createEvent(CreateEventRequest request) {
