@@ -23,6 +23,9 @@ public class UploadRuleFileUseCase {
     public boolean execute(MultipartFile multipartFile, String id) {
         if (multipartFile == null || multipartFile.isEmpty()) return false;
         final EventEntity event = eventRepository.findById(UUIDUtils.getFromString(id)).orElseThrow(() -> new NotFoundEntityException(EventEntity.class, id));
+        if (event.getFileName() != null && !event.getFileName().isBlank()){
+            new File("C:\\uploads\\" + event.getFileName() + ".pdf").delete();
+        }
         final String fileName = Objects.requireNonNull(multipartFile.getOriginalFilename()).replace(".pdf", "") + new Date().getTime();
         final File file = new File("C:\\uploads\\" + fileName + ".pdf");
         try {
