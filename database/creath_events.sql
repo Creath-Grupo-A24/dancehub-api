@@ -4,8 +4,9 @@ CREATE TABLE creath_events
     name        varchar,
     description varchar,
     file_name   varchar,
-    local       varchar,
-    time        timestamp
+    place       varchar,
+    time        timestamp,
+    finished    bool default false
 );
 
 CREATE TABLE creath_categories
@@ -14,10 +15,14 @@ CREATE TABLE creath_categories
     type varchar(30) not null
 );
 
-INSERT INTO creath_categories(type) values('SOLO');
-INSERT INTO creath_categories(type) values('DUO');
-INSERT INTO creath_categories(type) values('TRIO');
-INSERT INTO creath_categories(type) values('EQUIPE');
+INSERT INTO creath_categories(type)
+values ('SOLO');
+INSERT INTO creath_categories(type)
+values ('DUO');
+INSERT INTO creath_categories(type)
+values ('TRIO');
+INSERT INTO creath_categories(type)
+values ('EQUIPE');
 
 
 CREATE TABLE creath_events_categories
@@ -42,4 +47,5 @@ select *
 from creath_events;
 select *
 from creath_events_categories;
-select * from creath_categories;
+select *
+from creath_categories;

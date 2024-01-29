@@ -15,6 +15,10 @@ public final class SpecificationUtils {
         return (root, query, cb) -> cb.equal(cb.upper(root.get(prop)), term.toUpperCase());
     }
 
+    public static <T> Specification<T> equalBoolean(final String prop, final boolean bool) {
+        return (root, query, cb) -> cb.equal(root.get(prop), bool);
+    }
+
     public static <T> Specification<T> likeNumber(final String prop, final Number term) {
         return (root, query, cb) -> cb.like(root.get(prop), SqlUtils.like(term.toString()));
     }

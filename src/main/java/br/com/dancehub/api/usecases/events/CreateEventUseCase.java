@@ -16,7 +16,6 @@ import java.util.UUID;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class CreateEventUseCase {
 
-    // a gente precisa do objeto de dados iniciais
     private final EventRepository eventRepository;
     private final CategoryRepository categoryRepository;
 
@@ -25,14 +24,15 @@ public class CreateEventUseCase {
                 .stream()
                 .map(s -> this.categoryRepository.findById(Integer.parseInt(s))
                         .orElseThrow(() -> new NotFoundEntityException(Category.class, s))).toList();
-        final String local = req.local();
+        final String place = req.place();
         final String description = req.description();
         final String name = req.name();
         final LocalDateTime time = req.time();
 
         final EventEntity entity = EventEntity.builder()
+                .finished(false)
                 .categories(categories)
-                .local(local)
+                .place(place)
                 .description(description)
                 .name(name)
                 .time(time).build();

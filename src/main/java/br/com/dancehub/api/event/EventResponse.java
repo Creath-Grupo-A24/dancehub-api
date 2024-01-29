@@ -5,7 +5,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public record CreateEventRequest(
+public record EventResponse(
+        @JsonProperty("id")
+        String id,
         @JsonProperty("name")
         String name,
         @JsonProperty("description")
@@ -17,5 +19,4 @@ public record CreateEventRequest(
         @JsonProperty("categories")
         List<String> categories
 ) {
-
 }

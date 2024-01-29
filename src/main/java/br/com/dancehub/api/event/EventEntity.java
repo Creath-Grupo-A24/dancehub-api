@@ -1,7 +1,6 @@
 package br.com.dancehub.api.event;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -32,21 +31,24 @@ public class EventEntity {
             joinColumns = @JoinColumn(name = "event_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id"))
     private List<Category> categories;
-    @Column(name = "local")
-    private String local;
+    @Column(name = "place")
+    private String place;
     @Column(name = "time")
     private LocalDateTime time;
+    @Column(name = "finished")
+    private Boolean finished;
 
 
     @Builder
-    public EventEntity(UUID id, String name, String description, String fileName, List<Category> categories, String local, LocalDateTime time) {
+    public EventEntity(UUID id, String name, String description, String fileName, List<Category> categories, String place, LocalDateTime time, Boolean finished) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.fileName = fileName;
         this.categories = categories;
-        this.local = local;
+        this.place = place;
         this.time = time;
+        this.finished = finished;
     }
 
     public EventEntity() {
