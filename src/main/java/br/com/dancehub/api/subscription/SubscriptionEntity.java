@@ -1,10 +1,9 @@
-package br.com.dancehub.api.attraction;
+package br.com.dancehub.api.subscription;
 
 import br.com.dancehub.api.event.Category;
 import br.com.dancehub.api.event.EventEntity;
 import br.com.dancehub.api.user.User;
 import jakarta.persistence.*;
-import jdk.jfr.Event;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,10 +13,10 @@ import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Table(name = "creath_attractions")
+@Table(name = "creath_subscription")
 @Getter
 @Setter
-public class AttractionEntity {
+public class SubscriptionEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id")
@@ -41,13 +40,13 @@ public class AttractionEntity {
     @JoinColumn(name = "choreographer_id")
     private User choreographer;
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "creath_users_attractions",
-            joinColumns = @JoinColumn(name = "attraction_id"),
+    @JoinTable(name = "creath_users_subscription",
+            joinColumns = @JoinColumn(name = "subscription_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id"))
     private List<User> dancers;
 
     @Builder
-    public AttractionEntity(UUID id, String name, Category category, String description, LocalDateTime time, EventEntity event, User director, User choreographer, List<User> dancers) {
+    public SubscriptionEntity(UUID id, String name, Category category, String description, LocalDateTime time, EventEntity event, User director, User choreographer, List<User> dancers) {
         this.id = id;
         this.name = name;
         this.category = category;
@@ -59,6 +58,6 @@ public class AttractionEntity {
         this.dancers = dancers;
     }
 
-    public AttractionEntity() {
+    public SubscriptionEntity() {
     }
 }

@@ -1,12 +1,11 @@
-package br.com.dancehub.api.usecases.attraction.create;
+package br.com.dancehub.api.usecases.subscription.create;
 
-import br.com.dancehub.api.user.User;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
-public record CreateAttractionRequest(
+public record CreateSubscriptionRequest(
         @JsonProperty("name")
         String name,
         @JsonProperty("description")

@@ -39,4 +39,4 @@ comment on table CREATH_ROLES is 'Tabela de perfis';
 comment on table CREATH_USERS is 'Tabela de usuários';
 comment on table CREATH_USERS_ROLES is 'Tabela de perfis dos usuários';
 
-TRUNCATE TABLE creath_users, creath_users_roles, creath_attractions, creath_users_attractions;
+TRUNCATE TABLE creath_users, creath_users_roles, creath_subscription, creath_users_subscription;

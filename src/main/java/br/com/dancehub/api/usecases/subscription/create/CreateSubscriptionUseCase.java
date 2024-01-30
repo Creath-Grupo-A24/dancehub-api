@@ -1,8 +1,8 @@
-package br.com.dancehub.api.usecases.attraction.create;
+package br.com.dancehub.api.usecases.subscription.create;
 
 
-import br.com.dancehub.api.attraction.AttractionEntity;
-import br.com.dancehub.api.attraction.AttractionRepository;
+import br.com.dancehub.api.subscription.SubscriptionEntity;
+import br.com.dancehub.api.subscription.SubscriptionRepository;
 import br.com.dancehub.api.event.Category;
 import br.com.dancehub.api.event.CategoryRepository;
 import br.com.dancehub.api.event.EventEntity;
@@ -21,14 +21,14 @@ import java.util.UUID;
 
 @Component
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
-public class CreateAttractionUseCase {
-    private final AttractionRepository attractionRepository;
+public class CreateSubscriptionUseCase {
+    private final SubscriptionRepository subscriptionRepository;
     private final CategoryRepository categoryRepository;
     private final EventRepository eventRepository;
     private final UserRepository userRepository;
 
 
-    public UUID execute(CreateAttractionRequest request) {
+    public UUID execute(CreateSubscriptionRequest request) {
         String name = request.name();
         String description = request.description();
         LocalDateTime time = request.time();
@@ -45,7 +45,7 @@ public class CreateAttractionUseCase {
                 .map(s -> userRepository.findById(UUID.fromString(s))
                         .orElseThrow(() -> new NotFoundEntityException(User.class, s))).toList();
 
-        final AttractionEntity entity = AttractionEntity.builder()
+        final SubscriptionEntity entity = SubscriptionEntity.builder()
                 .name(name)
                 .description(description)
                 .time(time)
@@ -55,6 +55,6 @@ public class CreateAttractionUseCase {
                 .choreographer(choreographer)
                 .dancers(dancers).build();
 
-        return attractionRepository.save(entity).getId();
+        return subscriptionRepository.save(entity).getId();
     }
 }

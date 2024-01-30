@@ -1,4 +1,4 @@
-package br.com.dancehub.api.attraction;
+package br.com.dancehub.api.subscription;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 import java.util.UUID;
 
 @Repository
-public interface AttractionRepository extends JpaRepository<AttractionEntity, UUID> {
+public interface SubscriptionRepository extends JpaRepository<SubscriptionEntity, UUID> {
 }
