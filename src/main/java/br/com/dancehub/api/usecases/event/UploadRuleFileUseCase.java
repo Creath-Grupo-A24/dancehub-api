@@ -1,4 +1,4 @@
-package br.com.dancehub.api.usecases.events;
+package br.com.dancehub.api.usecases.event;
 
 import br.com.dancehub.api.event.EventEntity;
 import br.com.dancehub.api.event.EventRepository;

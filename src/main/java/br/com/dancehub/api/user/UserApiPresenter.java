@@ -14,7 +14,8 @@ public interface UserApiPresenter {
                 user.getRoles().stream().map(role -> role.getType().name()).toList(),
                 user.getCpf(),
                 user.getPhone(),
-                user.getBirthDate()
+                user.getBirthDate(),
+                user.getCompanyId() == null ? null : user.getCompanyId().toString()
         );
 
     }

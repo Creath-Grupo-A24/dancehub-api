@@ -21,6 +21,8 @@ public record UserResponse(
         @JsonProperty("phone")
         String phone,
         @JsonProperty("birth_date")
-        Date birthDate
+        Date birthDate,
+        @JsonProperty("company_id")
+        String companyId
 ) {
 }

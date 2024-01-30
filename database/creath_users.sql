@@ -4,10 +4,14 @@ CREATE TABLE CREATH_ROLES
     type varchar(30) not null
 );
 
-INSERT INTO CREATH_ROLES (type) VALUES ('ADMIN');
-INSERT INTO CREATH_ROLES (type) VALUES ('MANAGER');
-INSERT INTO CREATH_ROLES (type) VALUES ('TEACHER');
-INSERT INTO CREATH_ROLES (type) VALUES ('DANCER');
+INSERT INTO CREATH_ROLES (type)
+VALUES ('ADMIN');
+INSERT INTO CREATH_ROLES (type)
+VALUES ('MANAGER');
+INSERT INTO CREATH_ROLES (type)
+VALUES ('TEACHER');
+INSERT INTO CREATH_ROLES (type)
+VALUES ('DANCER');
 
 CREATE TABLE CREATH_USERS
 (
@@ -20,7 +24,8 @@ CREATE TABLE CREATH_USERS
     password      varchar not null,
     cpf           varchar not null unique,
     birth_date    date    not null,
-    password_date date
+    password_date date,
+    company_id    uuid references creath_companies (id)
 );
 
 CREATE TABLE CREATH_USERS_ROLES

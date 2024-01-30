@@ -10,6 +10,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serializable;
+import java.security.SecureRandom;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -21,6 +22,22 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 public class User implements UserDetails, Serializable {
+
+    private static final String ALLOWED_CHARACTERS = "abcdefghijklmnopqrstuvwxyz123456789";
+    private static final int TOKEN_LENGTH = 16;
+
+    private static String generateRandomToken() {
+        final SecureRandom random = new SecureRandom();
+        final StringBuilder token = new StringBuilder(TOKEN_LENGTH);
+
+        for (int i = 0; i < TOKEN_LENGTH; i++) {
+            int randomIndex = random.nextInt(ALLOWED_CHARACTERS.length());
+            char randomChar = ALLOWED_CHARACTERS.charAt(randomIndex);
+            token.append(randomChar);
+        }
+
+        return token.toString();
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -49,6 +66,8 @@ public class User implements UserDetails, Serializable {
     private String password;
     @Column(name = "token")
     private String token;
+    @Column(name = "company_id")
+    private UUID companyId;
 
     @Builder
     public User(UUID id, List<Role> roles, String email, String cpf, String name, String phone, Date birthDate, Date passwordDate, String username, String password, String token) {
@@ -81,6 +100,11 @@ public class User implements UserDetails, Serializable {
     private static String handleDocument(String document) {
         return document != null ? document.replaceAll("[^0-9]", "") : null;
     }
+
+    public void generateToken() {
+        this.token = generateRandomToken();
+    }
+
 
     public void changePassword(String password) {
         this.password = password;

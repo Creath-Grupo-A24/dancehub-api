@@ -3,7 +3,7 @@ package br.com.dancehub.api.controllers;
 import br.com.dancehub.api.event.*;
 import br.com.dancehub.api.shared.Pagination;
 import br.com.dancehub.api.shared.SearchQuery;
-import br.com.dancehub.api.usecases.events.*;
+import br.com.dancehub.api.usecases.event.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
