@@ -32,7 +32,7 @@ public abstract class Validator<T> {
         return this;
     }
 
-    public Validator<T> throwPossibleErrors() {
+    public Validator<T> throwPossibleErrors() throws ValidationException {
         if (!errors.isEmpty())
             throw new ValidationException(this.errors);
         return this;
