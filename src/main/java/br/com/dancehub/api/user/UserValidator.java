@@ -18,8 +18,12 @@ public class UserValidator extends Validator<User> {
         }
         if (object.getUsername() == null || object.getUsername().isBlank())
             addError("username", ValidationErrorMessage.NOT_NULLABLE);
+        if (object.getUsername() != null && object.getUsername().matches(" ") || object.getUsername().length() > 16)
+            addError("username", ValidationErrorMessage.NOT_VALID_USERNAME);
         if (object.getEmail() == null || object.getEmail().isBlank())
             addError("email", ValidationErrorMessage.NOT_NULLABLE);
+        if(object.getEmail() != null && !ValidationUtils.isValidEmail(object.getEmail()))
+            addError("email", ValidationErrorMessage.NOT_VALID_EMAIL);
         if (object.getName() == null || object.getName().isBlank())
             addError("name", ValidationErrorMessage.NOT_NULLABLE);
         if (object.getRoles() == null || object.getRoles().isEmpty())

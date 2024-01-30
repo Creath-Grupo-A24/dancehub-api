@@ -16,7 +16,10 @@ public enum ValidationErrorMessage {
     NOT_VALID_TIME(9, "O campo '{field}' não possui um horário válido (HH:mm)."),
     NOT_REPEATABLE(10, "Os campos '{field}' estão idênticos."),
     NOT_EMPTY(11, "O campo '{field}' não pode estar vazio."),
-    NOT_UNIQUE(12, "O valor do campo '{field}' já existe em nossa base de dados.");
+    NOT_UNIQUE(12, "O valor do campo '{field}' já existe em nossa base de dados."),
+    NOT_VALID_USERNAME(13, "O campo '{field}' não é um username válido"),
+    NOT_VALID_EMAIL(14, "O campo '{field} não é um email válido");
+
 
 
     private final Integer code;

@@ -3,8 +3,20 @@ package br.com.dancehub.api.utils;
 
 
 import java.util.InputMismatchException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ValidationUtils {
+
+    private static final String EMAIL_REGEX =
+            "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
+
+    private static final Pattern PATTERN_EMAIL = Pattern.compile(EMAIL_REGEX);
+
+    public static boolean isValidEmail(String email) {
+        final Matcher matcher = PATTERN_EMAIL.matcher(email);
+        return matcher.matches();
+    }
 
 
     public static boolean isValidMobilePhoneNumber(String s) {
@@ -119,7 +131,4 @@ public class ValidationUtils {
         return isCPF(document) || isCNPJ(document);
     }
 
-    public static boolean isValidEmailAddress(String email) {
-        return true;
-    }
 }
