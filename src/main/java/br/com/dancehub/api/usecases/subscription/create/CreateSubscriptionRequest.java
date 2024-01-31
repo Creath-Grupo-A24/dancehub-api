@@ -16,10 +16,6 @@ public record CreateSubscriptionRequest(
         String category,
         @JsonProperty("event_id")
         String event_id,
-        @JsonProperty("director")
-        String director_id,
-        @JsonProperty("choreographer")
-        String choreographer_id,
         @JsonProperty("dancers")
         List<String> dancers_id
 ) {
