@@ -3,12 +3,11 @@ package br.com.dancehub.api.company;
 
 import br.com.dancehub.api.user.User;
 import jakarta.persistence.*;
-import lombok.*;
-import org.springframework.scheduling.support.SimpleTriggerContext;
-import org.springframework.stereotype.Component;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.io.Serializable;
 import java.util.UUID;
 
@@ -28,19 +27,11 @@ public class Company implements Serializable {
     @OneToOne(cascade = {CascadeType.REFRESH, CascadeType.DETACH}, targetEntity = User.class)
     @JoinColumn(name = "owner_id")
     private User owner;
-    @OneToMany(cascade = {CascadeType.REFRESH, CascadeType.DETACH}, orphanRemoval = true, fetch = FetchType.EAGER)
-    @JoinColumn(name = "company_id", referencedColumnName = "id")
-    private List<User> dancers;
-    @OneToMany(cascade = {CascadeType.REFRESH, CascadeType.DETACH}, orphanRemoval = true, fetch = FetchType.EAGER)
-    @JoinColumn(name = "company_id", referencedColumnName = "id")
-    private List<User> choreographer;
 
     @Builder
-    public Company(UUID id, String name, User owner, List<User> dancers, List<User> choreographer) {
+    public Company(UUID id, String name, User owner) {
         this.id = id;
         this.name = name;
         this.owner = owner;
-        this.dancers = dancers == null ? new ArrayList<>() : dancers;
-        this.choreographer = choreographer == null ? new ArrayList<>() : choreographer;
     }
 }
