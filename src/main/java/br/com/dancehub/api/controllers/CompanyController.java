@@ -1,9 +1,9 @@
 package br.com.dancehub.api.controllers;
 
-import br.com.dancehub.api.company.CompanyAPI;
-import br.com.dancehub.api.company.CompanyApiPresenter;
-import br.com.dancehub.api.company.CompanyResponse;
-import br.com.dancehub.api.company.models.CreateCompanyRequest;
+import br.com.dancehub.api.contexts.company.CompanyAPI;
+import br.com.dancehub.api.contexts.company.CompanyApiPresenter;
+import br.com.dancehub.api.contexts.company.CompanyResponse;
+import br.com.dancehub.api.contexts.company.models.CreateCompanyRequest;
 import br.com.dancehub.api.usecases.company.CreateCompanyUseCase;
 import br.com.dancehub.api.usecases.company.GetCompanyUseCase;
 import lombok.RequiredArgsConstructor;

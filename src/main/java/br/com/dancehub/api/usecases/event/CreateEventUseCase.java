@@ -1,7 +1,7 @@
 package br.com.dancehub.api.usecases.event;
 
-import br.com.dancehub.api.event.*;
-import br.com.dancehub.api.exceptions.NotFoundEntityException;
+import br.com.dancehub.api.contexts.event.*;
+import br.com.dancehub.api.shared.exceptions.NotFoundEntityException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

@@ -1,7 +1,7 @@
 package br.com.dancehub.api.controllers;
 
-import br.com.dancehub.api.invite.InviteAPI;
-import br.com.dancehub.api.invite.models.CreateInviteRequest;
+import br.com.dancehub.api.contexts.invite.InviteAPI;
+import br.com.dancehub.api.contexts.invite.models.CreateInviteRequest;
 import br.com.dancehub.api.usecases.invite.InviteUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

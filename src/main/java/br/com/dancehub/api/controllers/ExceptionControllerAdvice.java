@@ -1,8 +1,8 @@
 package br.com.dancehub.api.controllers;
 
-import br.com.dancehub.api.exceptions.NotFoundEntityException;
-import br.com.dancehub.api.validation.FieldError;
-import br.com.dancehub.api.validation.exceptions.ValidationException;
+import br.com.dancehub.api.shared.exceptions.NotFoundEntityException;
+import br.com.dancehub.api.shared.validation.FieldError;
+import br.com.dancehub.api.shared.validation.exceptions.ValidationException;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.extern.slf4j.Slf4j;

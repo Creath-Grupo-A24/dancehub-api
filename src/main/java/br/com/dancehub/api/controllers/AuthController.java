@@ -1,16 +1,14 @@
 package br.com.dancehub.api.controllers;
 
+import br.com.dancehub.api.contexts.user.AuthAPI;
+import br.com.dancehub.api.contexts.user.models.AuthResponse;
+import br.com.dancehub.api.contexts.user.models.SignInRequest;
+import br.com.dancehub.api.contexts.user.models.SignUpRequest;
 import br.com.dancehub.api.usecases.users.SignInUseCase;
 import br.com.dancehub.api.usecases.users.SignUpUseCase;
-import br.com.dancehub.api.user.AuthAPI;
-import br.com.dancehub.api.user.models.AuthResponse;
-import br.com.dancehub.api.user.models.SignInRequest;
-import br.com.dancehub.api.user.models.SignUpRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController

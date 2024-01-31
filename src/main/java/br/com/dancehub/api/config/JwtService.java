@@ -1,7 +1,7 @@
 package br.com.dancehub.api.config;
 
 
-import br.com.dancehub.api.user.User;
+import br.com.dancehub.api.contexts.user.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

@@ -1,10 +1,10 @@
 package br.com.dancehub.api.jobs;
 
-import br.com.dancehub.api.company.Company;
-import br.com.dancehub.api.company.CompanyRepository;
-import br.com.dancehub.api.invite.Invite;
-import br.com.dancehub.api.invite.InviteRepository;
-import br.com.dancehub.api.user.User;
+import br.com.dancehub.api.contexts.company.Company;
+import br.com.dancehub.api.contexts.company.CompanyRepository;
+import br.com.dancehub.api.contexts.invite.Invite;
+import br.com.dancehub.api.contexts.invite.InviteRepository;
+import br.com.dancehub.api.contexts.user.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

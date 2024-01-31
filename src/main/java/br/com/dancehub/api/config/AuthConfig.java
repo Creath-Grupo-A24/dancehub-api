@@ -1,6 +1,6 @@
 package br.com.dancehub.api.config;
 
-import br.com.dancehub.api.user.UserRepository;
+import br.com.dancehub.api.contexts.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

@@ -1,15 +1,15 @@
 package br.com.dancehub.api.usecases.invite;
 
 
-import br.com.dancehub.api.company.Company;
-import br.com.dancehub.api.company.CompanyRepository;
-import br.com.dancehub.api.exceptions.NotFoundEntityException;
-import br.com.dancehub.api.invite.Invite;
-import br.com.dancehub.api.invite.InviteRepository;
-import br.com.dancehub.api.invite.models.CreateInviteRequest;
-import br.com.dancehub.api.user.User;
-import br.com.dancehub.api.user.UserRepository;
-import br.com.dancehub.api.utils.UUIDUtils;
+import br.com.dancehub.api.contexts.company.Company;
+import br.com.dancehub.api.contexts.company.CompanyRepository;
+import br.com.dancehub.api.contexts.invite.Invite;
+import br.com.dancehub.api.contexts.invite.InviteRepository;
+import br.com.dancehub.api.contexts.invite.models.CreateInviteRequest;
+import br.com.dancehub.api.contexts.user.User;
+import br.com.dancehub.api.contexts.user.UserRepository;
+import br.com.dancehub.api.shared.exceptions.NotFoundEntityException;
+import br.com.dancehub.api.shared.utils.UUIDUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

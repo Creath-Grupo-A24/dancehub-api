@@ -1,6 +1,6 @@
 package br.com.dancehub.api.config;
 
-import br.com.dancehub.api.user.User;
+import br.com.dancehub.api.contexts.user.User;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

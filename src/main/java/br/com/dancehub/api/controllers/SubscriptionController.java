@@ -1,12 +1,12 @@
 package br.com.dancehub.api.controllers;
 
-import br.com.dancehub.api.event.EventResponse;
-import br.com.dancehub.api.exceptions.MessageException;
-import br.com.dancehub.api.exceptions.PermissionException;
-import br.com.dancehub.api.subscription.SubscriptionAPI;
+import br.com.dancehub.api.contexts.event.EventResponse;
+import br.com.dancehub.api.contexts.subscription.SubscriptionAPI;
+import br.com.dancehub.api.contexts.user.User;
+import br.com.dancehub.api.shared.exceptions.MessageException;
+import br.com.dancehub.api.shared.exceptions.PermissionException;
 import br.com.dancehub.api.usecases.subscription.create.CreateSubscriptionRequest;
 import br.com.dancehub.api.usecases.subscription.create.CreateSubscriptionUseCase;
-import br.com.dancehub.api.user.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

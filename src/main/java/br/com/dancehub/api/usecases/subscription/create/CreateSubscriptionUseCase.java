@@ -1,16 +1,16 @@
 package br.com.dancehub.api.usecases.subscription.create;
 
 
-import br.com.dancehub.api.subscription.SubscriptionEntity;
-import br.com.dancehub.api.subscription.SubscriptionRepository;
-import br.com.dancehub.api.event.Category;
-import br.com.dancehub.api.event.CategoryRepository;
-import br.com.dancehub.api.event.EventEntity;
-import br.com.dancehub.api.event.EventRepository;
-import br.com.dancehub.api.exceptions.NotFoundEntityException;
-import br.com.dancehub.api.user.User;
-import br.com.dancehub.api.user.UserRepository;
-import br.com.dancehub.api.utils.UUIDUtils;
+import br.com.dancehub.api.contexts.event.Category;
+import br.com.dancehub.api.contexts.event.CategoryRepository;
+import br.com.dancehub.api.contexts.event.EventEntity;
+import br.com.dancehub.api.contexts.event.EventRepository;
+import br.com.dancehub.api.contexts.subscription.SubscriptionEntity;
+import br.com.dancehub.api.contexts.subscription.SubscriptionRepository;
+import br.com.dancehub.api.contexts.user.User;
+import br.com.dancehub.api.contexts.user.UserRepository;
+import br.com.dancehub.api.shared.exceptions.NotFoundEntityException;
+import br.com.dancehub.api.shared.utils.UUIDUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

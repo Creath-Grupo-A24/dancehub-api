@@ -1,8 +1,8 @@
 package br.com.dancehub.api.config;
 
-import br.com.dancehub.api.user.User;
-import br.com.dancehub.api.user.UserRepository;
-import br.com.dancehub.api.utils.UUIDUtils;
+import br.com.dancehub.api.contexts.user.User;
+import br.com.dancehub.api.contexts.user.UserRepository;
+import br.com.dancehub.api.shared.utils.UUIDUtils;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

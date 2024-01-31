@@ -1,10 +1,10 @@
 package br.com.dancehub.api.usecases.users;
 
 import br.com.dancehub.api.config.JwtService;
-import br.com.dancehub.api.user.User;
-import br.com.dancehub.api.user.UserApiPresenter;
-import br.com.dancehub.api.user.models.AuthResponse;
-import br.com.dancehub.api.user.models.SignInRequest;
+import br.com.dancehub.api.contexts.user.User;
+import br.com.dancehub.api.contexts.user.UserApiPresenter;
+import br.com.dancehub.api.contexts.user.models.AuthResponse;
+import br.com.dancehub.api.contexts.user.models.SignInRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;

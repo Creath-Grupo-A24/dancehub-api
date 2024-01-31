@@ -1,7 +1,7 @@
 package br.com.dancehub.api.usecases.event;
 
-import br.com.dancehub.api.event.EventEntity;
-import br.com.dancehub.api.event.EventRepository;
+import br.com.dancehub.api.contexts.event.EventEntity;
+import br.com.dancehub.api.contexts.event.EventRepository;
 import br.com.dancehub.api.shared.Pagination;
 import br.com.dancehub.api.shared.SearchQuery;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +13,8 @@ import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
-import static br.com.dancehub.api.utils.SpecificationUtils.*;
+import static br.com.dancehub.api.shared.utils.SpecificationUtils.equalBoolean;
+import static br.com.dancehub.api.shared.utils.SpecificationUtils.like;
 
 @Component
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
