@@ -1,5 +1,6 @@
 package br.com.dancehub.api.controllers;
 
+import br.com.dancehub.api.event.EventResponse;
 import br.com.dancehub.api.exceptions.MessageException;
 import br.com.dancehub.api.exceptions.PermissionException;
 import br.com.dancehub.api.subscription.SubscriptionAPI;
@@ -22,9 +23,9 @@ public class SubscriptionController implements SubscriptionAPI {
     private final CreateSubscriptionUseCase createsubscriptionUseCase;
     @Override
     public ResponseEntity<?> createSubscription(CreateSubscriptionRequest request) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        final Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         final UUID uuid;
-        User user = (User) auth.getPrincipal();
+        final User user = (User) auth.getPrincipal();
         if (auth.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("MANAGER"))) {
             uuid = this.createsubscriptionUseCase.execute(request);
         } else if(auth.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("DANCER"))){
@@ -35,5 +36,10 @@ public class SubscriptionController implements SubscriptionAPI {
         }else throw new PermissionException(user.getRoles());
 
         return ResponseEntity.created(URI.create("/v1/subscription/" + uuid.toString())).build();
+    }
+
+    @Override
+    public ResponseEntity<EventResponse> getEvent(String id) {
+        return null;
     }
 }

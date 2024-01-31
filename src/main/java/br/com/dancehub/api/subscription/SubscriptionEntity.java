@@ -3,6 +3,8 @@ package br.com.dancehub.api.subscription;
 import br.com.dancehub.api.event.Category;
 import br.com.dancehub.api.event.EventEntity;
 import br.com.dancehub.api.user.User;
+import br.com.dancehub.api.user.role.Role;
+import br.com.dancehub.api.user.role.RoleType;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
@@ -33,31 +35,48 @@ public class SubscriptionEntity {
     @ManyToOne
     @JoinColumn(name = "event_id")
     private EventEntity event;
-    @OneToOne
-    @JoinColumn(name = "director_id")
-    private User director;
-    @ManyToOne
-    @JoinColumn(name = "choreographer_id")
-    private User choreographer;
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "creath_users_subscription",
             joinColumns = @JoinColumn(name = "subscription_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id"))
-    private List<User> dancers;
+    private List<User> staff;
 
     @Builder
-    public SubscriptionEntity(UUID id, String name, Category category, String description, LocalDateTime time, EventEntity event, User director, User choreographer, List<User> dancers) {
+    public SubscriptionEntity(UUID id, String name, Category category, String description, LocalDateTime time, EventEntity event, List<User> staff) {
         this.id = id;
         this.name = name;
         this.category = category;
         this.description = description;
         this.time = time;
         this.event = event;
-        this.director = director;
-        this.choreographer = choreographer;
-        this.dancers = dancers;
+        this.staff = staff;
     }
 
     public SubscriptionEntity() {
+    }
+
+    // manager único
+    public User getManager() {
+        return this.staff.stream()
+                .filter(user -> user.getRoles()
+                        .stream()
+                        .anyMatch(role -> role.getType().equals(RoleType.MANAGER)))
+                .findFirst().orElse(null);
+    }
+
+    // vários coreógrafos
+    public List<User> getTeacher() {
+        return this.staff.stream()
+                .filter(user -> user.getRoles()
+                        .stream()
+                        .anyMatch(role -> role.getType().equals(RoleType.TEACHER))).toList();
+    }
+
+    // vários dançarinos
+    public List<User> getDancers(){
+        return this.staff.stream()
+                .filter(user -> user.getRoles()
+                        .stream()
+                        .anyMatch(role -> role.getType().equals(RoleType.DANCER))).toList();
     }
 }

@@ -40,7 +40,7 @@ public class CreateSubscriptionUseCase {
                 .orElseThrow(() -> new NotFoundEntityException(User.class, request.director_id()));
         User choreographer = userRepository.findById(UUID.fromString(request.choreographer_id()))
                 .orElseThrow(() -> new NotFoundEntityException(User.class, request.choreographer_id()));
-        List<User> dancers = request.dancers_id()
+        List<User> staff = request.dancers_id()
                 .stream()
                 .map(s -> userRepository.findById(UUID.fromString(s))
                         .orElseThrow(() -> new NotFoundEntityException(User.class, s))).toList();
@@ -51,9 +51,7 @@ public class CreateSubscriptionUseCase {
                 .time(time)
                 .category(category)
                 .event(event)
-                .director(director)
-                .choreographer(choreographer)
-                .dancers(dancers).build();
+                .staff(staff).build();
 
         return subscriptionRepository.save(entity).getId();
     }
