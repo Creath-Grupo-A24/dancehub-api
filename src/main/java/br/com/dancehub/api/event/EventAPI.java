@@ -4,6 +4,7 @@ import br.com.dancehub.api.shared.Pagination;
 import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -11,17 +12,20 @@ import org.springframework.web.multipart.MultipartFile;
 public interface EventAPI {
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PreAuthorize("hasRole('ADMIN')")
     ResponseEntity<?> createEvent(@RequestBody CreateEventRequest request);
 
     @PostMapping(
             value = "/rules/{id}/upload",
             consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PreAuthorize("hasRole('ADMIN')")
     ResponseEntity<?> uploadRules(@RequestParam("file") MultipartFile multipartFile, @PathVariable String id);
 
     @GetMapping(
             value = "/rules/{id}/download",
             produces = MediaType.APPLICATION_PDF_VALUE
     )
+    @PreAuthorize("hasRole('ADMIN') or hasRole('MANAGER')")
     ResponseEntity<byte[]> downloadRules(@PathVariable String id);
 
     @GetMapping(

@@ -31,7 +31,9 @@ public class SecurityConfig {
             "/v1/sign/**",
             "/docs/**",
             "/error",
-            "/error/*"
+            "/error/*",
+            "/v1/events/*",
+            "/v1/events/list"
     };
 
 
