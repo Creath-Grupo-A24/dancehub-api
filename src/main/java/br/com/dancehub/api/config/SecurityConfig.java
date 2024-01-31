@@ -33,7 +33,10 @@ public class SecurityConfig {
             "/error",
             "/error/*",
             "/v1/events/*",
-            "/v1/events/list"
+            "/v1/events/list",
+            "/v1/subscription/*",
+            "/v1/subscription/list",
+            "/v1/subscription/event/*",
     };
 
 
