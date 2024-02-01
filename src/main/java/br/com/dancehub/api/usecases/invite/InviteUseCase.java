@@ -40,14 +40,14 @@ public class InviteUseCase {
 
     public void execute(CreateInviteRequest request) {
         final Company company = companyRepository.findById(UUIDUtils.getFromString(request.companyId())).orElseThrow(() -> new NotFoundEntityException(Company.class, request.companyId()));
-        final User user = userRepository.findById(UUIDUtils.getFromString(request.companyId())).orElseThrow(() -> new NotFoundEntityException(User.class, request.companyId()));
+        final User guest = userRepository.findById(UUIDUtils.getFromString(request.guestId())).orElseThrow(() -> new NotFoundEntityException(User.class, request.guestId()));
 
-        if (user.getId() == null) {
+        if (guest.getId() == null) {
             throw new RuntimeException("Não pode convidar esse usuário");
         }
 
         final Invite invite = Invite.builder()
-                .guest(user)
+                .guest(guest)
                 .companyId(company.getId())
                 .key(generateKey(50))
                 .sent(false)

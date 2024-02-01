@@ -26,7 +26,7 @@ public class InviteJob {
     private final CompanyRepository companyRepository;
     private final JavaMailSender sender;
 
-    @Scheduled(fixedDelay = 1, timeUnit = TimeUnit.MINUTES)
+    @Scheduled(fixedDelay = 30, timeUnit = TimeUnit.SECONDS)
     public void sendEmails() {
         final Page<Invite> invites = this.inviteRepository.findAllBySentIsFalse(PageRequest.of(0, 10));
         invites.get().forEach(invite -> {
