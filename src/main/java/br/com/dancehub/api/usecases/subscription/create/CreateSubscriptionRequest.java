@@ -16,7 +16,7 @@ public record CreateSubscriptionRequest(
         String category,
         @JsonProperty("event_id")
         String event_id,
-        @JsonProperty("dancers")
-        List<String> dancers_id
+        @JsonProperty("staff")
+        List<String> staff_id
 ) {
 }

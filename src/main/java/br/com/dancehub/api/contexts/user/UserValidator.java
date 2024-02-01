@@ -32,7 +32,8 @@ public class UserValidator extends Validator<User> {
             addError("cpf", ValidationErrorMessage.NOT_NULLABLE);
         else if (!ValidationUtils.isCPF(object.getCpf()))
             addError("cpf", ValidationErrorMessage.NOT_VALID_CPF);
-        if (object.getPhone() != null && !ValidationUtils.isValidPhoneNumber(object.getPhone()))
+        if (object.getPhone() != null && !ValidationUtils.isValidPhoneNumber(object.getPhone())
+                && !ValidationUtils.isValidMobilePhoneNumber(object.getPhone()))
             addError("phone", ValidationErrorMessage.NOT_VALID_PHONE_NUMBER);
         if (object.getBirthDate() == null)
             addError("birthDate", ValidationErrorMessage.NOT_NULLABLE);

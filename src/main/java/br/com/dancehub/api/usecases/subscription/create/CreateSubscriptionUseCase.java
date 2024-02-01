@@ -36,7 +36,7 @@ public class CreateSubscriptionUseCase {
                         .orElseThrow(() -> new NotFoundEntityException(Category.class, request.category()));
         EventEntity event = eventRepository.findById(UUIDUtils.getFromString(request.event_id()))
                 .orElseThrow(() -> new NotFoundEntityException(EventEntity.class, request.event_id()));
-        List<User> staff = request.dancers_id()
+        List<User> staff = request.staff_id()
                 .stream()
                 .map(s -> userRepository.findById(UUID.fromString(s))
                         .orElseThrow(() -> new NotFoundEntityException(User.class, s))).toList();
