@@ -8,6 +8,7 @@ import br.com.dancehub.api.contexts.invite.InviteRepository;
 import br.com.dancehub.api.contexts.invite.models.CreateInviteRequest;
 import br.com.dancehub.api.contexts.user.User;
 import br.com.dancehub.api.contexts.user.UserRepository;
+import br.com.dancehub.api.contexts.user.role.RoleType;
 import br.com.dancehub.api.shared.exceptions.NotFoundEntityException;
 import br.com.dancehub.api.shared.utils.UUIDUtils;
 import lombok.RequiredArgsConstructor;
@@ -42,9 +43,14 @@ public class InviteUseCase {
         final Company company = companyRepository.findById(UUIDUtils.getFromString(request.companyId())).orElseThrow(() -> new NotFoundEntityException(Company.class, request.companyId()));
         final User guest = userRepository.findById(UUIDUtils.getFromString(request.guestId())).orElseThrow(() -> new NotFoundEntityException(User.class, request.guestId()));
 
-        if (guest.getId() == null) {
+        if (guest.getId() == null)
             throw new RuntimeException("Não pode convidar esse usuário");
-        }
+        if (guest.getRoles().stream().anyMatch(role -> role.getType() == RoleType.MANAGER))
+            throw new RuntimeException("Não pode convidar esse usuário");
+        if (guest.getCompanyId() != null)
+            throw new RuntimeException("Não pode convidar esse usuário");
+        if (guest.getId() == company.getOwner().getId())
+            throw new RuntimeException("Não pode convidar a si mesmo");
 
         final Invite invite = Invite.builder()
                 .guest(guest)

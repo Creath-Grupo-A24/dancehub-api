@@ -38,7 +38,7 @@ public class InviteJob {
                 final SimpleMailMessage message = new SimpleMailMessage();
                 message.setSubject("DANCE-HUB Convite para Companhia " + company.getName());
                 message.setTo(guest.getEmail());
-                message.setText("Acesse o link de convite: %s".formatted("http://localhost:8091/invite/confirm/" + invite.getKey()));
+                message.setText("Acesse o link de convite: %s".formatted("http://localhost:8091/v1/invite/confirm/" + invite.getKey()));
 
                 try {
                     this.sender.send(message);

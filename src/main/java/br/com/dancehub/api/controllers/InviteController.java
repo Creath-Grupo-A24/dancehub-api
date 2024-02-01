@@ -2,6 +2,7 @@ package br.com.dancehub.api.controllers;
 
 import br.com.dancehub.api.contexts.invite.InviteAPI;
 import br.com.dancehub.api.contexts.invite.models.CreateInviteRequest;
+import br.com.dancehub.api.usecases.invite.ConfirmInviteUseCase;
 import br.com.dancehub.api.usecases.invite.InviteUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +14,17 @@ import org.springframework.web.bind.annotation.RestController;
 public class InviteController implements InviteAPI {
 
     private final InviteUseCase useCase;
+    private final ConfirmInviteUseCase confirmInviteUseCase;
 
     @Override
     public ResponseEntity<?> invite(CreateInviteRequest request) {
         this.useCase.execute(request);
         return ResponseEntity.noContent().build();
     }
+
+    @Override
+    public String confirm(String key) {
+        return this.confirmInviteUseCase.execute(key);
+    }
+
 }
