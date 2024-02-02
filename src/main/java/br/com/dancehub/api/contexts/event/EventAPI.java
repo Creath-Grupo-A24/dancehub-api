@@ -1,5 +1,7 @@
 package br.com.dancehub.api.contexts.event;
 
+import br.com.dancehub.api.contexts.event.models.CreateEventRequest;
+import br.com.dancehub.api.contexts.event.models.EventResponse;
 import br.com.dancehub.api.shared.Pagination;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

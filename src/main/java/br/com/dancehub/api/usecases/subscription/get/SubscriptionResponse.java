@@ -1,22 +1,23 @@
-package br.com.dancehub.api.contexts.event;
+package br.com.dancehub.api.usecases.subscription.get;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
-public record EventResponse(
-        @JsonProperty("id")
-        String id,
+public record SubscriptionResponse(
         @JsonProperty("name")
         String name,
         @JsonProperty("description")
         String description,
-        @JsonProperty("place")
-        String place,
         @JsonProperty("time")
         LocalDateTime time,
-        @JsonProperty("categories")
-        List<String> categories
+        @JsonProperty("category")
+        String category,
+        @JsonProperty("event_id")
+        String event_id,
+        @JsonProperty("staff")
+        List<String> staff_id
 ) {
+
 }

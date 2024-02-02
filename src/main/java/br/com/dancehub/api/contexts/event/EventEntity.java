@@ -1,5 +1,6 @@
 package br.com.dancehub.api.contexts.event;
 
+import br.com.dancehub.api.contexts.event.category.Category;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;

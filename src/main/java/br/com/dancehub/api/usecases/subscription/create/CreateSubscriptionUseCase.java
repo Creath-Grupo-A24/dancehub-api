@@ -1,8 +1,8 @@
 package br.com.dancehub.api.usecases.subscription.create;
 
 
-import br.com.dancehub.api.contexts.event.Category;
-import br.com.dancehub.api.contexts.event.CategoryRepository;
+import br.com.dancehub.api.contexts.event.category.Category;
+import br.com.dancehub.api.contexts.event.category.CategoryRepository;
 import br.com.dancehub.api.contexts.event.EventEntity;
 import br.com.dancehub.api.contexts.event.EventRepository;
 import br.com.dancehub.api.contexts.subscription.SubscriptionEntity;

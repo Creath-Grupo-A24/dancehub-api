@@ -1,6 +1,9 @@
 package br.com.dancehub.api.usecases.event;
 
 import br.com.dancehub.api.contexts.event.*;
+import br.com.dancehub.api.contexts.event.category.Category;
+import br.com.dancehub.api.contexts.event.category.CategoryRepository;
+import br.com.dancehub.api.contexts.event.models.CreateEventRequest;
 import br.com.dancehub.api.shared.exceptions.NotFoundEntityException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

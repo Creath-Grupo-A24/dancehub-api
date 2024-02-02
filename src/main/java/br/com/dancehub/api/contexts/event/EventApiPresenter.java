@@ -1,5 +1,7 @@
 package br.com.dancehub.api.contexts.event;
 
+import br.com.dancehub.api.contexts.event.models.EventResponse;
+
 public interface EventApiPresenter {
 
     static EventResponse present(EventEntity entity) {

@@ -1,9 +1,9 @@
 package br.com.dancehub.api.controllers;
 
-import br.com.dancehub.api.contexts.event.CreateEventRequest;
+import br.com.dancehub.api.contexts.event.models.CreateEventRequest;
 import br.com.dancehub.api.contexts.event.EventAPI;
 import br.com.dancehub.api.contexts.event.EventApiPresenter;
-import br.com.dancehub.api.contexts.event.EventResponse;
+import br.com.dancehub.api.contexts.event.models.EventResponse;
 import br.com.dancehub.api.shared.Pagination;
 import br.com.dancehub.api.shared.SearchQuery;
 import br.com.dancehub.api.usecases.event.*;
