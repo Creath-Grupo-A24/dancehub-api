@@ -33,12 +33,6 @@ public interface EventAPI {
     ResponseEntity<byte[]> downloadRules(@PathVariable String id);
 
     @GetMapping(
-            value = "/{id}",
-            produces = MediaType.APPLICATION_JSON_VALUE
-    )
-    ResponseEntity<EventResponse> getEvent(@PathVariable String id);
-
-    @GetMapping(
             value = "/categories",
             produces = MediaType.APPLICATION_JSON_VALUE
     )
@@ -55,6 +49,12 @@ public interface EventAPI {
             @RequestParam(name = "sort", required = false, defaultValue = "time") String sort,
             @RequestParam(name = "direction", required = false, defaultValue = "ASC") String direction
     );
+
+    @GetMapping(
+            value = "/{id}",
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    ResponseEntity<EventResponse> getEvent(@PathVariable String id);
 
 
 }
