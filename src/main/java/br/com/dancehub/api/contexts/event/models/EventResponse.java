@@ -1,5 +1,6 @@
 package br.com.dancehub.api.contexts.event.models;
 
+import br.com.dancehub.api.contexts.event.category.CategoryResponse;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.time.LocalDateTime;
@@ -17,6 +18,6 @@ public record EventResponse(
         @JsonProperty("time")
         LocalDateTime time,
         @JsonProperty("categories")
-        List<String> categories
+        List<CategoryResponse> categories
 ) {
 }

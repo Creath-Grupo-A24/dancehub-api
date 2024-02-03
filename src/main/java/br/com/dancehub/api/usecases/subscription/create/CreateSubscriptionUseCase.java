@@ -22,24 +22,22 @@ import java.util.UUID;
 @Component
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class CreateSubscriptionUseCase {
+
     private final SubscriptionRepository subscriptionRepository;
     private final CategoryRepository categoryRepository;
     private final EventRepository eventRepository;
     private final UserRepository userRepository;
 
-
     public UUID execute(CreateSubscriptionRequest request) {
-        String name = request.name();
-        String description = request.description();
-        LocalDateTime time = request.time();
-        Category category = this.categoryRepository.findById(Integer.parseInt(request.category()))
-                        .orElseThrow(() -> new NotFoundEntityException(Category.class, request.category()));
-        EventEntity event = eventRepository.findById(UUIDUtils.getFromString(request.event_id()))
+        final String name = request.name();
+        final String description = request.description();
+        final LocalDateTime time = request.time();
+        final Integer categoryId = request.categoryId();
+        final Category category = this.categoryRepository.findById(categoryId)
+                        .orElseThrow(() -> new NotFoundEntityException(Category.class, categoryId.toString()));
+        final EventEntity event = eventRepository.findById(UUIDUtils.getFromString(request.event_id()))
                 .orElseThrow(() -> new NotFoundEntityException(EventEntity.class, request.event_id()));
-        List<User> staff = request.staff_id()
-                .stream()
-                .map(s -> userRepository.findById(UUID.fromString(s))
-                        .orElseThrow(() -> new NotFoundEntityException(User.class, s))).toList();
+        final List<User> staff = this.userRepository.findAllById(request.staff_id().stream().map(UUIDUtils::getFromString).toList());
 
         final SubscriptionEntity entity = SubscriptionEntity.builder()
                 .name(name)

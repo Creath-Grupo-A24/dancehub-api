@@ -14,8 +14,8 @@ public record CreateEventRequest(
         String place,
         @JsonProperty("time")
         LocalDateTime time,
-        @JsonProperty("categories")
-        List<String> categories
+        @JsonProperty("categories_ids")
+        List<Integer> categories
 ) {
 
 }

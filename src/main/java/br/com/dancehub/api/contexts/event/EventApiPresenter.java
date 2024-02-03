@@ -1,5 +1,6 @@
 package br.com.dancehub.api.contexts.event;
 
+import br.com.dancehub.api.contexts.event.category.CategoryApiPresenter;
 import br.com.dancehub.api.contexts.event.models.EventResponse;
 
 public interface EventApiPresenter {
@@ -11,7 +12,7 @@ public interface EventApiPresenter {
                 entity.getDescription(),
                 entity.getPlace(),
                 entity.getTime(),
-                entity.getCategories().stream().map(category -> category.getType().name()).toList()
+                entity.getCategories().stream().map(CategoryApiPresenter::present).toList()
         );
     }
 

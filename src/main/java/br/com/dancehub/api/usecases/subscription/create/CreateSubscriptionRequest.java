@@ -12,8 +12,8 @@ public record CreateSubscriptionRequest(
         String description,
         @JsonProperty("time")
         LocalDateTime time,
-        @JsonProperty("category")
-        String category,
+        @JsonProperty("category_id")
+        Integer categoryId,
         @JsonProperty("event_id")
         String event_id,
         @JsonProperty("staff")
