@@ -1,6 +1,6 @@
 package br.com.dancehub.api.contexts.subscription;
 
-import br.com.dancehub.api.contexts.event.Category;
+import br.com.dancehub.api.contexts.event.category.Category;
 import br.com.dancehub.api.contexts.event.EventEntity;
 import br.com.dancehub.api.contexts.user.User;
 import br.com.dancehub.api.contexts.user.role.RoleType;

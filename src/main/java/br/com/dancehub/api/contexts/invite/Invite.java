@@ -37,5 +37,6 @@ public class Invite implements Serializable {
         this.companyId = companyId;
         this.guest = guest;
         this.key = key;
+        this.sent = sent;
     }
 }

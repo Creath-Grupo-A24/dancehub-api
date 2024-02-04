@@ -1,6 +1,6 @@
 package br.com.dancehub.api.contexts.subscription;
 
-import br.com.dancehub.api.contexts.event.EventResponse;
+import br.com.dancehub.api.usecases.subscription.get.SubscriptionResponse;
 import br.com.dancehub.api.shared.Pagination;
 import br.com.dancehub.api.usecases.subscription.create.CreateSubscriptionRequest;
 import org.springframework.http.MediaType;

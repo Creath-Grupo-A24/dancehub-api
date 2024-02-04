@@ -26,7 +26,7 @@ public class InviteJob {
     private final CompanyRepository companyRepository;
     private final JavaMailSender sender;
 
-    @Scheduled(fixedDelay = 1, timeUnit = TimeUnit.MINUTES)
+    @Scheduled(fixedDelay = 30, timeUnit = TimeUnit.SECONDS)
     public void sendEmails() {
         final Page<Invite> invites = this.inviteRepository.findAllBySentIsFalse(PageRequest.of(0, 10));
         invites.get().forEach(invite -> {
@@ -38,7 +38,7 @@ public class InviteJob {
                 final SimpleMailMessage message = new SimpleMailMessage();
                 message.setSubject("DANCE-HUB Convite para Companhia " + company.getName());
                 message.setTo(guest.getEmail());
-                message.setText("Acesse o link de convite: %s".formatted("http://localhost:8091/invite/confirm/" + invite.getKey()));
+                message.setText("Acesse o link de convite: %s".formatted("http://localhost:8091/v1/invite/confirm/" + invite.getKey()));
 
                 try {
                     this.sender.send(message);

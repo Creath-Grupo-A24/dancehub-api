@@ -1,4 +1,4 @@
-package br.com.dancehub.api.contexts.subscription;
+package br.com.dancehub.api.usecases.subscription.get;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

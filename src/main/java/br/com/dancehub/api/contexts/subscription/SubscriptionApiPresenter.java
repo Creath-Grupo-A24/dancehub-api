@@ -1,5 +1,7 @@
 package br.com.dancehub.api.contexts.subscription;
 
+import br.com.dancehub.api.usecases.subscription.get.SubscriptionResponse;
+
 public interface SubscriptionApiPresenter {
 
     static SubscriptionResponse present(SubscriptionEntity entity) {

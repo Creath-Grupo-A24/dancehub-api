@@ -1,4 +1,4 @@
-package br.com.dancehub.api.contexts.event;
+package br.com.dancehub.api.contexts.event.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -14,8 +14,8 @@ public record CreateEventRequest(
         String place,
         @JsonProperty("time")
         LocalDateTime time,
-        @JsonProperty("categories")
-        List<String> categories
+        @JsonProperty("categories_ids")
+        List<Integer> categories
 ) {
 
 }

@@ -1,9 +1,8 @@
 package br.com.dancehub.api.controllers;
 
-import br.com.dancehub.api.contexts.event.EventResponse;
 import br.com.dancehub.api.contexts.subscription.SubscriptionAPI;
 import br.com.dancehub.api.contexts.subscription.SubscriptionApiPresenter;
-import br.com.dancehub.api.contexts.subscription.SubscriptionResponse;
+import br.com.dancehub.api.usecases.subscription.get.SubscriptionResponse;
 import br.com.dancehub.api.contexts.user.User;
 import br.com.dancehub.api.shared.Pagination;
 import br.com.dancehub.api.shared.SearchQuery;

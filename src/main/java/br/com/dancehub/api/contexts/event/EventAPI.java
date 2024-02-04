@@ -1,11 +1,16 @@
 package br.com.dancehub.api.contexts.event;
 
+import br.com.dancehub.api.contexts.event.category.CategoryResponse;
+import br.com.dancehub.api.contexts.event.models.CreateEventRequest;
+import br.com.dancehub.api.contexts.event.models.EventResponse;
 import br.com.dancehub.api.shared.Pagination;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 @RequestMapping("/v1/events/")
 public interface EventAPI {
@@ -28,10 +33,10 @@ public interface EventAPI {
     ResponseEntity<byte[]> downloadRules(@PathVariable String id);
 
     @GetMapping(
-            value = "/{id}",
+            value = "/categories",
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    ResponseEntity<EventResponse> getEvent(@PathVariable String id);
+    ResponseEntity<List<CategoryResponse>> getCategories();
 
     @GetMapping(
             value = "/list",
@@ -45,6 +50,11 @@ public interface EventAPI {
             @RequestParam(name = "direction", required = false, defaultValue = "ASC") String direction
     );
 
+    @GetMapping(
+            value = "/{id}",
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    ResponseEntity<EventResponse> getEvent(@PathVariable String id);
 
 
 }

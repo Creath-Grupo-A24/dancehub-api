@@ -1,4 +1,4 @@
-package br.com.dancehub.api.contexts.event;
+package br.com.dancehub.api.contexts.event.category;
 
 public enum CategoryType {
     SOLO,

@@ -1,9 +1,12 @@
 package br.com.dancehub.api.controllers;
 
-import br.com.dancehub.api.contexts.event.CreateEventRequest;
+import br.com.dancehub.api.contexts.event.category.Category;
+import br.com.dancehub.api.contexts.event.category.CategoryApiPresenter;
+import br.com.dancehub.api.contexts.event.category.CategoryResponse;
+import br.com.dancehub.api.contexts.event.models.CreateEventRequest;
 import br.com.dancehub.api.contexts.event.EventAPI;
 import br.com.dancehub.api.contexts.event.EventApiPresenter;
-import br.com.dancehub.api.contexts.event.EventResponse;
+import br.com.dancehub.api.contexts.event.models.EventResponse;
 import br.com.dancehub.api.shared.Pagination;
 import br.com.dancehub.api.shared.SearchQuery;
 import br.com.dancehub.api.usecases.event.*;
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.net.URI;
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -26,6 +30,7 @@ public class EventController implements EventAPI {
     private final CreateEventUseCase createEventUseCase;
     private final UploadRuleFileUseCase uploadRuleFileUseCase;
     private final GetEventsUseCase getEventsUseCase;
+    private final GetCategoriesUseCase getCategoriesUseCase;
 
     @Override
     public ResponseEntity<?> createEvent(CreateEventRequest request) {
@@ -48,6 +53,11 @@ public class EventController implements EventAPI {
     @Override
     public ResponseEntity<EventResponse> getEvent(String id) {
         return ResponseEntity.ok(EventApiPresenter.present(getEventUseCase.execute(id)));
+    }
+
+    @Override
+    public ResponseEntity<List<CategoryResponse>> getCategories() {
+        return ResponseEntity.ok(this.getCategoriesUseCase.execute().stream().map(CategoryApiPresenter::present).toList());
     }
 
     @Override
