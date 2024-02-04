@@ -14,6 +14,5 @@ import java.util.UUID;
 public interface SubscriptionRepository extends JpaRepository<SubscriptionEntity, UUID> {
 
     Page<SubscriptionEntity> findAll(Specification<SubscriptionEntity> specification, Pageable pageable);
-    @Query("SELECT '*' FROM SubscriptionEntity WHERE event.id = :eventId")
-    Page<SubscriptionEntity> findByEventId(@Param("eventId")UUID eventId, Pageable pageable);
+    Page<SubscriptionEntity> findByEventId (UUID eventId, Pageable pageable);
 }

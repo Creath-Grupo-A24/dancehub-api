@@ -67,6 +67,7 @@ public class SubscriptionController implements SubscriptionAPI {
     @Override
     public ResponseEntity<Pagination<SubscriptionResponse>> getSubscriptionByEventId(String eventId, Integer page, Integer perPage, String terms, String sort, String direction) {
         final SearchQuery searchQuery = new SearchQuery(page, perPage, terms, sort, direction);
+
         return ResponseEntity.ok(
                 this.getSubscriptionByEventIdUseCase.execute(eventId, searchQuery)
                         .map(SubscriptionApiPresenter::present)

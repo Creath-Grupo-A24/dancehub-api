@@ -4,6 +4,7 @@ public interface SubscriptionApiPresenter {
 
     static SubscriptionResponse present(SubscriptionEntity entity) {
         return new SubscriptionResponse(
+                entity.getId().toString(),
                 entity.getName(),
                 entity.getDescription(),
                 entity.getTime(),

@@ -24,13 +24,13 @@ public class GetSubscriptionByEventIdUseCase {
                 searchQuery.perPage(),
                 Sort.by(Sort.Direction.fromString(searchQuery.direction()), searchQuery.sort())
         );
+
         final var pageResult = subscriptionRepository.findByEventId(UUID.fromString(eventId), pageConfig);
 
         return new Pagination<>(
                 pageResult.getNumber(),
                 pageResult.getSize(),
                 pageResult.getTotalElements(),
-                pageResult.toList()
-        );
+                pageResult.toList());
     }
 }

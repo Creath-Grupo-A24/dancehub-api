@@ -34,11 +34,11 @@ public interface SubscriptionAPI {
     );
 
     @GetMapping(
-            value = "/event/{id}",
+            value = "/event/{eventId}",
             produces = MediaType.APPLICATION_JSON_VALUE
     )
     ResponseEntity<Pagination<SubscriptionResponse>> getSubscriptionByEventId(
-            @PathVariable String id,
+            @PathVariable String eventId,
             @RequestParam(name = "page", required = false, defaultValue = "0") Integer page,
             @RequestParam(name = "perPage", required = false, defaultValue = "10") Integer perPage,
             @RequestParam(name = "terms", required = false) String terms,
