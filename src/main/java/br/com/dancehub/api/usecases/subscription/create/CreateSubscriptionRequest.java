@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public record CreateSubscriptionRequest(
+public record   CreateSubscriptionRequest(
         @JsonProperty("name")
         String name,
         @JsonProperty("description")

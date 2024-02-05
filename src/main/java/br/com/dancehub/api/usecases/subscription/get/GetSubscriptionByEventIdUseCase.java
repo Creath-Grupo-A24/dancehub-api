@@ -25,7 +25,7 @@ public class GetSubscriptionByEventIdUseCase {
                 Sort.by(Sort.Direction.fromString(searchQuery.direction()), searchQuery.sort())
         );
 
-        final var pageResult = subscriptionRepository.findByEventId(UUID.fromString(eventId), pageConfig);
+        final var pageResult = subscriptionRepository.findAllByEventId(UUID.fromString(eventId), pageConfig);
 
         return new Pagination<>(
                 pageResult.getNumber(),
