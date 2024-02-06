@@ -50,8 +50,8 @@ tasks.named('test') {
 }
 
 bootJar {
-	archiveFileName = "dancehub-api.${archiveExtension.get()}"
-	destinationDirectory.set(file("${rootProject.layout.buildDirectory}/libs"))
+	archiveFileName.set("dancehub-api.${archiveExtension.get()}")
+	destinationDirectory.set(rootProject.layout.buildDirectory.get().dir("/libs"))
 }
 
 springBoot {
