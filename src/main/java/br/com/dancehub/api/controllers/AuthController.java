@@ -1,7 +1,6 @@
 package br.com.dancehub.api.controllers;
 
 import br.com.dancehub.api.contexts.user.AuthAPI;
-import br.com.dancehub.api.contexts.user.User;
 import br.com.dancehub.api.contexts.user.UserApiPresenter;
 import br.com.dancehub.api.contexts.user.models.AuthResponse;
 import br.com.dancehub.api.contexts.user.models.SignInRequest;
@@ -13,7 +12,6 @@ import br.com.dancehub.api.usecases.users.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,7 +23,8 @@ public class AuthController implements AuthAPI {
 
     private final SignInUseCase signInUseCase;
     private final SignUpUseCase signUpUseCase;
-    private final GetUserUseCase getUserUseCase;
+    private final GetUserByIDUseCase getUserByIDUseCase;
+    private final GetUserByUsernameUseCase getUserByUsernameUseCase;
     private final GetRolesUseCase getRolesUseCase;
 
     @Override
@@ -41,13 +40,13 @@ public class AuthController implements AuthAPI {
 
     @Override
     public ResponseEntity<UserResponse> getUser(String id) {
-        return ResponseEntity.ok(UserApiPresenter.present(this.getUserUseCase.execute(id)));
+        return ResponseEntity.ok(UserApiPresenter.present(this.getUserByIDUseCase.execute(id)));
     }
 
     @Override
     public ResponseEntity<UserResponse> getUserByToken() {
-        final User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return ResponseEntity.ok(UserApiPresenter.present(user));
+        final String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        return ResponseEntity.ok(UserApiPresenter.present(this.getUserByUsernameUseCase.execute(username)));
     }
 
     @Override

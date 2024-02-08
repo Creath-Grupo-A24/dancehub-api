@@ -10,12 +10,12 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
-public class GetUserUseCase {
+public class GetUserByUsernameUseCase {
 
     private final UserRepository userRepository;
 
-    public User execute(final String id) {
-        return this.userRepository.findById(UUIDUtils.getFromString(id)).orElseThrow(() -> new NotFoundEntityException(User.class, id));
+    public User execute(String username) {
+        return this.userRepository.findByUsername(username).orElseThrow(() -> new NotFoundEntityException(User.class, username));
     }
 
 }
