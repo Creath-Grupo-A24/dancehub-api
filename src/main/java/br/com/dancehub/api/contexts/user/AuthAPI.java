@@ -44,4 +44,9 @@ public interface AuthAPI {
     )
     ResponseEntity<List<RoleResponse>> getRoles();
 
+    @GetMapping(
+            value = "/company/{companyId}",
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    ResponseEntity<List<UserResponse>> getUsersByCompany(@PathVariable(name = "companyId") String companyId);
 }

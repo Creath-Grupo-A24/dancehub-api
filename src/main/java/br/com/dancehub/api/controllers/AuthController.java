@@ -26,6 +26,7 @@ public class AuthController implements AuthAPI {
     private final GetUserByIDUseCase getUserByIDUseCase;
     private final GetUserByUsernameUseCase getUserByUsernameUseCase;
     private final GetRolesUseCase getRolesUseCase;
+    private final GetUsersByCompanyUseCase getUsersByCompanyUseCase;
 
     @Override
     public ResponseEntity<AuthResponse> authSignIn(SignInRequest request) {
@@ -52,5 +53,10 @@ public class AuthController implements AuthAPI {
     @Override
     public ResponseEntity<List<RoleResponse>> getRoles() {
         return ResponseEntity.ok(this.getRolesUseCase.execute().stream().map(RoleApiPresenter::present).toList());
+    }
+
+    @Override
+    public ResponseEntity<List<UserResponse>> getUsersByCompany(String companyId) {
+        return ResponseEntity.ok(this.getUsersByCompanyUseCase.execute(companyId).stream().map(UserApiPresenter::present).toList());
     }
 }
