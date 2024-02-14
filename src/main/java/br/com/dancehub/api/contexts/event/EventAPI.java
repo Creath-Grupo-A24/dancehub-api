@@ -54,7 +54,7 @@ public interface EventAPI {
             value = "/{id}",
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    ResponseEntity<EventResponse> getEvent(@PathVariable String id);
+    ResponseEntity<EventResponse> getEvent(@PathVariable(name = "id") String id);
 
 
 }

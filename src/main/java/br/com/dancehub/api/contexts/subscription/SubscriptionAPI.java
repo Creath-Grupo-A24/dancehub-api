@@ -19,7 +19,7 @@ public interface SubscriptionAPI {
             value = "/{id}",
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    ResponseEntity<SubscriptionResponse> getSubscription(@PathVariable String id);
+    ResponseEntity<SubscriptionResponse> getSubscription(@PathVariable(name = "id") String id);
 
     @GetMapping(
             value = "/list",
@@ -38,7 +38,7 @@ public interface SubscriptionAPI {
             produces = MediaType.APPLICATION_JSON_VALUE
     )
     ResponseEntity<Pagination<SubscriptionResponse>> getSubscriptionByEventId(
-            @PathVariable String eventId,
+            @PathVariable(name = "eventId") String eventId,
             @RequestParam(name = "page", required = false, defaultValue = "0") Integer page,
             @RequestParam(name = "perPage", required = false, defaultValue = "10") Integer perPage,
             @RequestParam(name = "terms", required = false) String terms,

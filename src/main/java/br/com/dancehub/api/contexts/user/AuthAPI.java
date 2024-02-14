@@ -30,7 +30,7 @@ public interface AuthAPI {
             value = "/{id}",
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    ResponseEntity<UserResponse> getUser(@PathVariable String id);
+    ResponseEntity<UserResponse> getUser(@PathVariable(name = "id") String id);
 
     @GetMapping(
             value = "/token",

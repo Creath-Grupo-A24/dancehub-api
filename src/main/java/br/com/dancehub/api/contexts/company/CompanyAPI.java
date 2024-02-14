@@ -17,5 +17,5 @@ public interface CompanyAPI {
             value = "/{id}",
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    ResponseEntity<CompanyResponse> getCompany(@PathVariable String id);
+    ResponseEntity<CompanyResponse> getCompany(@PathVariable(name = "id") String id);
 }

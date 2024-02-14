@@ -17,5 +17,5 @@ public interface InviteAPI {
             value = "/confirm/{key}",
             produces = MediaType.TEXT_HTML_VALUE
     )
-    String confirm(@PathVariable String key);
+    String confirm(@PathVariable(name = "key") String key);
 }
