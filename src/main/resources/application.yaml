@@ -43,6 +43,11 @@ spring:
     password: certivale
 
 server:
+  error:
+    include-message: always
+    include-binding-errors: always
+    include-stacktrace: on_param
+    include-exception: false
   port: 8091
   shutdown: graceful
   servlet:

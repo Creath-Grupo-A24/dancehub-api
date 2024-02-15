@@ -7,7 +7,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -15,18 +14,10 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import java.util.List;
-import java.util.Optional;
 
 @ControllerAdvice
 @Slf4j
 public class ExceptionControllerAdvice extends ResponseEntityExceptionHandler {
-
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<ProblemDetail> handleAllExceptions(Exception ex, WebRequest ignored) {
-        final ProblemDetail problemDetail =
-                ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, ex.getMessage() + ":" + ex.getLocalizedMessage());
-        return ResponseEntity.of(Optional.of(problemDetail));
-    }
 
     @ExceptionHandler(ValidationException.class)
     public ResponseEntity<CustomErrorResponse> handleNotificationException(ValidationException ex, WebRequest ignored) {
