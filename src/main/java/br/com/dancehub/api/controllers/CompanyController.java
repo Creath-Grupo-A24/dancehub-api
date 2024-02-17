@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.net.URI;
+import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
@@ -23,7 +24,7 @@ public class CompanyController implements CompanyAPI {
     @Override
     public ResponseEntity<?> createCompany(CreateCompanyRequest request) {
         final String uuid = this.createCompanyUseCase.execute(request);
-        return ResponseEntity.created(URI.create("/v1/companies/" + uuid)).build();
+        return ResponseEntity.created(URI.create("/v1/companies/" + uuid)).body(Map.of("id", uuid));
     }
 
     @Override
