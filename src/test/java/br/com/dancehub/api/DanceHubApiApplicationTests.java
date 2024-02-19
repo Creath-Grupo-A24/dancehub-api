@@ -109,7 +109,6 @@ class DanceHubApiApplicationTests {
         CreateInviteRequest inviteRequest = new CreateInviteRequest("82432f9b-b204-405f-8181-d69977d00774", "409733de-beb8-4090-8120-24aa7f92cdd8");
         MvcResult result = mockMvc.perform(post("/v1/invite").contentType(MediaType.APPLICATION_JSON).content(objectMapper.writeValueAsBytes(inviteRequest)))
                 .andExpect(status().isNoContent()).andReturn();
-
     }
 
     @Test
