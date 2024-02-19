@@ -92,7 +92,6 @@ class DanceHubApiApplicationTests {
         mockMvc.perform(get("/v1/companies/82432f9b-b204-405f-8181-d69977d00774"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.name", is("NOVA COMPANHIA VIP")));
-
     }
 
     @Test
