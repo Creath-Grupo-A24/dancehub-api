@@ -7,6 +7,7 @@ import br.com.dancehub.api.contexts.invite.models.CreateInviteRequest;
 import br.com.dancehub.api.contexts.user.User;
 import br.com.dancehub.api.contexts.user.UserRepository;
 import br.com.dancehub.api.contexts.user.models.AuthResponse;
+import br.com.dancehub.api.contexts.user.models.SignInRequest;
 import br.com.dancehub.api.contexts.user.models.SignUpRequest;
 import br.com.dancehub.api.contexts.user.models.UserResponse;
 import br.com.dancehub.api.shared.SearchQuery;
@@ -152,13 +153,13 @@ class DanceHubApiApplicationTests {
 
     @Test
     void testCreateSubscription() throws Exception {
-        CreateSubscriptionRequest subscriptionRequest = new CreateSubscriptionRequest("NOVA COMPANHIA VIP",
+        CreateSubscriptionRequest subscriptionRequest =
+                new CreateSubscriptionRequest("NOVA COMPANHIA VIP",
                 "descricao",
                 LocalDateTime.of(2024, 7, 12, 5, 0),
                 2,
                 "822ecce2-4b5b-4875-a7ea-e9d00dfdaebb",
-                List.of("409733de-beb8-4090-8120-24aa7f92cdd8",
-                        "8e859840-e512-46ea-ad29-b057547424ca"));
+                List.of("409733de-beb8-4090-8120-24aa7f92cdd8"));
         mockMvc.perform(post("/v1/subscription/").contentType(MediaType.APPLICATION_JSON).content(objectMapper.writeValueAsBytes(subscriptionRequest)))
                 .andExpect(status().isCreated()).andReturn();
     }
