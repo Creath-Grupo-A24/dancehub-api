@@ -9,8 +9,8 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 587
-    username: "dancehubcreath@gmail.com"
-    password: "ruwjnnletefwfbiz"
+    username: "XXXXXXXXXXXXXXXXXXXXXXXXX"
+    password: "XXXXXXXXXXXXXXXXXXXXXXXXX"
     properties:
       mail:
         smtp:
@@ -37,10 +37,10 @@ spring:
       minimumIdle: '5'
       maximumPoolSize: '20'
       schema: public
-    url: jdbc:postgresql://158.69.122.78:5432/postgres
+    url: XXXXXXXXXXXXXXXXXXXXXXXXX
     type: com.zaxxer.hikari.HikariDataSource
-    username: postgres
-    password: certivale
+    username: XXXXXXXXXXXXXXXXXXXXXXXXX
+    password: XXXXXXXXXXXXXXXXXXXXXXXXX
 
 server:
   error:

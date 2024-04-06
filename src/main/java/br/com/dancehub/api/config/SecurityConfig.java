@@ -57,8 +57,8 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(config -> config.configurationSource(request -> cors))
                 .authorizeHttpRequests(auth -> auth
-                        /*.requestMatchers(AUTH_WHITELIST).permitAll()*/
-                        .anyRequest().permitAll() // temporario
+                        .requestMatchers(AUTH_WHITELIST).permitAll()
+                        .anyRequest().permitAll()
                 ).sessionManagement(config -> config.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(this.authenticationProvider)
                 .exceptionHandling(config -> config.authenticationEntryPoint(this.authEntryPointJwt));
